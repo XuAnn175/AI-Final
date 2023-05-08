@@ -1,5 +1,5 @@
 # AI-Finals  
-AI FINAL PROJECT  : Applying Ai to 3D Five in a row (將Ai運用於立體五子棋)  
+AI FINAL PROJECT  : Applying Ai to 3D Five in a row (將AI運用於立體五子棋)  
 Target : To build a application that allow people to game with AI  
 Model : Mainly Adversarial Search (Minimax) , will also try other model to gain better performance.  
 The main functions of this project are listed as follows.(details are to be implemented)  
