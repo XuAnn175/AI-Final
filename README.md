@@ -13,4 +13,12 @@ The difference b/t our project and most existing ones is that we don't use the s
 
 ### Dataset/Platform
 I am using Spambase dataset from [this kaggle](https://www.kaggle.com/datasets/nittalasatyasrinivas/smsspamcollectiontsv) and split them into 2 manually for training and testing.  
+The distribution of dataset are presented below.  
+```mermaid
+pie
+    title dataset
+    "ham" : 4822
+    "spam" : 746
+```
 
+### Baseline
