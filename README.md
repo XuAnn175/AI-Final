@@ -51,7 +51,7 @@ Feature selection is the process of selecting what we think is worthwhile in our
 We select the k most 'worthwhile' data as feature and use them to fit Gaussian Naive Bayes classifier.  
 In the baseline model,we use the most intuitive way : choose k-th highest freq. uni/bi/trigrams as our feature.  
 
-### main approach
+### Main approach
 ```mermaid
 graph LR
     A[TrainData] -->|preprocess|B(feature selection)
