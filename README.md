@@ -45,3 +45,5 @@ In the baseline model,we use the most intuitive way : choose k-th highest freq. 
 
 ### main approach
 #### 1.chi square feature selection  
+
+#### 2.Bert
