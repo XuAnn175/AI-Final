@@ -61,5 +61,5 @@ The equation is given in below,where “O” stands for observed or actual value
 ![](https://imgur.com/dKWbGLb.jpg)  
 Eexpected values are calculated using the equation below.<br/><br/>
 ![](https://imgur.com/kTYd2Ds.jpg)<br/><br/>
-After calculating the chi-squared value of each feature,we select the k highest and use them to fit Gaussian Naive Bayes classifier.
+After calculating the chi-squared value of each feature,we select the k(default=500) highest and use them to fit Gaussian Naive Bayes classifier.
 #### 2.Bert
