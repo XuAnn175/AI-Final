@@ -23,6 +23,14 @@ pie
 
 ### Baseline
 In the baseline,we use Gaussian Naive Bayes classifier w/ unigram,bigram,trigram and k-th highest freq. as feature selection method 
+```mermaid
+graph LR
+    A[TrainData] -->|preprocess|B(feature selection)
+    B --> |k most freq.|C{modeltype}
+    C --> |unigram|H(evaluation)
+    C --> |bigram|H(evaluation)
+    C --> |trigram|H(evaluation)
+```
 #### unigram
 The appearance prob. of a word is independent from the other words.
 ```
@@ -47,7 +55,6 @@ In the baseline model,we use the most intuitive way : choose k-th highest freq. 
 ```mermaid
 graph LR
     A[TrainData] -->|preprocess|B(feature selection)
-    B --> |kth most freq.|C{modeltype}
     B --> |chi-squared|C{modeltype}
     C --> |unigram|H(evaluation)
     C --> |bigram|H(evaluation)
