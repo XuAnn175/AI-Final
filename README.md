@@ -22,4 +22,19 @@ pie
 ```
 
 ### Baseline - N-Gram Language Models
-In the baseline,we 
+In the baseline,we use unigram,bigram,trigram with k-th highest freq. as feature selection method in baseline model.  
+#### unigram
+The appearance prob. of a word is independent from the other words.
+```
+P(W1,W2,W3,...,Wn) = P(W1)* P(W2)*P(W3) *…*P(Wn-1)*P(Wn)
+```
+#### bigram
+The appearance prob. of a word is relevant to that of previous word.
+```
+P(W1,W2,W3,...,Wn) = P(W1)* P(W2|W1)*P(W3|W2) *…*P(Wn|Wn-1)
+```
+#### trigram
+The appearance prob. of a word is relevant to that of two previous word.
+```
+P(W1,W2,W3,...,Wn) = P(W1)* P(W2|W1)*P(W3|W2,W1) *…*P(Wn|Wn-1,Wn-2)
+```
