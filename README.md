@@ -46,7 +46,7 @@ In the baseline model,we use the most intuitive way : choose k-th highest freq. 
 ### main approach
 ```mermaid
 graph LR
-    A[TrainData] -->|preprocess.py|B(feature selection)
+    A[TrainData] -->|preprocess|B(feature selection)
     B --> |kth most freq.|C{modeltype}
     B --> |chi-squared|C{modeltype}
     C --> |unigram|H(evaluation)
