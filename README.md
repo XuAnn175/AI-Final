@@ -44,6 +44,22 @@ We select the k most 'worthwhile' data as feature and use them to fit Gaussian N
 In the baseline model,we use the most intuitive way : choose k-th highest freq. uni/bi/trigrams as our feature.  
 
 ### main approach
-#### 1.chi square feature selection  
-
+```mermaid
+graph LR
+    A[TrainData] -->|preprocess.py|B(feature selection)
+    B --> |kth most freq.|C{modeltype}
+    B --> |chi-squared|C{modeltype}
+    C --> |unigram|H(evaluation)
+    C --> |bigram|H(evaluation)
+    C --> |trigram|H(evaluation)
+    C --> |bert|H(evaluation)
+```
+#### 1.Chi-squared test for feature selection  
+Based on ngram model,instead of choosing k-th highest freq. uni/bi/trigrams,we change to another feature selection method called  Chi-Squared test for feature selection.
+Chi-squared test is a statistical method that can calculate the degree of how dependent a featue is to the final answer.  
+The equation is given in below,where “O” stands for observed or actual value and “E” stands for expected value of that feature. 
+![](https://imgur.com/dKWbGLb.jpg)  
+Eexpected values are calculated using the equation below.<br/><br/>
+![](https://imgur.com/kTYd2Ds.jpg)<br/><br/>
+After calculating the chi-squared value of each feature,we select the k highest and use them to fit Gaussian Naive Bayes classifier.
 #### 2.Bert
