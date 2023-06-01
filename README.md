@@ -76,3 +76,5 @@ One of the key innovations of BERT is its ability to capture the bidirectional c
 The pre-training process of BERT involves two main tasks: masked language modeling (MLM) and next sentence prediction (NSP). MLM involves randomly masking words in the input text and training the model to predict the masked words. NSP involves providing pairs of sentences to the model and training it to predict whether the second sentence follows the first in the original text.
 
 After pre-training, BERT can be fine-tuned on specific downstream NLP tasks such as text classification,which is what we use here : mail type prediction.
+
+### Evaluation metric
