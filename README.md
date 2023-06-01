@@ -78,3 +78,25 @@ The pre-training process of BERT involves two main tasks: masked language modeli
 After pre-training, BERT can be fine-tuned on specific downstream NLP tasks such as text classification,which is what we use here : mail type prediction.
 
 ### Evaluation metric
+We define four parameters as follows  
+True Positive (TP) : when predicted ham email is actually ham email   
+True Negative (TN) : when predicted ham email news is actually spam email  
+False Negative (FN) : when predicted spam email is actually spam email  
+False Positive (FP) : when predicted spam email is actually ham email  <br/>    
+Then we can furthur define four evaluation metrics based on above 4 parameters.
+```
+Recall = TP/(TP + FN) 
+```
+Recall is a metric that records the ratio of the correctly positively-labeled by our program to all ham emails in reality.
+```
+Precision = TP/(TP + FP)
+```
+Precision is a metric that measures how precise the prediction is if we predict the label to be positive(ham).
+We can view precision as follows : 
+How many of those who we labeled as ham are actually ham?
+
+```
+F1-score = 2 * Precision * Recall / (Precision + Recall)
+```
+F1 Score is a metric that considers both precision and recall,and equalizes the importance of both parameters.
+It is the harmonic mean(average) of the precision and recall.
