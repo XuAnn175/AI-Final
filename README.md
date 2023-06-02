@@ -100,3 +100,18 @@ F1-score = 2 * Precision * Recall / (Precision + Recall)
 ```
 F1 Score is a metric that considers both precision and recall,and equalizes the importance of both parameters.
 It is the harmonic mean(average) of the precision and recall.
+
+### Results & Analysis
+
+#### 1. Chi-squared test for feature selection
+#### Result 
+F1 socre of 3 ngram models under different feature selection methods.
+![](https://imgur.com/Yzwnf55.jpg)
+
+Precision of 3 ngram models under different feature selection methods.
+![](https://imgur.com/efDaCKe.jpg)
+
+Recall of 3 ngram models under different feature selection methods.
+![](https://imgur.com/gj3ax1n.jpg)
+
+#### Analysis
