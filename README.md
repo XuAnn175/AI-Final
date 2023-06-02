@@ -13,7 +13,7 @@ The difference b/t our project and most existing ones is that we don't use the s
 
 ### Dataset/Platform
 I am using Spambase dataset from [this kaggle](https://www.kaggle.com/datasets/nittalasatyasrinivas/smsspamcollectiontsv) and split them into 2 manually for training and testing.  
-The distribution of dataset are presented below.  
+The distribution of dataset is presented below.  
 ```mermaid
 pie
     title dataset
@@ -102,16 +102,19 @@ F1 Score is a metric that considers both precision and recall,and equalizes the 
 It is the harmonic mean(average) of the precision and recall.
 
 ### Results & Analysis
-
-#### 1. Chi-squared test for feature selection
 #### Result 
 F1 socre of 3 ngram models under different feature selection methods.
-![](https://imgur.com/Yzwnf55.jpg)
+![](https://imgur.com/t8Uf1eg.jpg)
 
 Precision of 3 ngram models under different feature selection methods.
-![](https://imgur.com/efDaCKe.jpg)
+![](https://imgur.com/lcezEeF.jpg)
 
 Recall of 3 ngram models under different feature selection methods.
-![](https://imgur.com/gj3ax1n.jpg)
+![](https://imgur.com/wRDbgAz.jpg)
 
 #### Analysis
+#### 1. Chi-squared test for feature selection
+We can see that in both unigram and bigram models,there's a significant improvement in all of the 3 evaluation metrics. In contrast to the trigram model,which already has a better prerformance because its better connectivity of context,the improvement of chi-square test is thus not that obvious.
+<br/>After printing 20 highest ranked features the 2 methods select,we can find that what sorting method choose is like ( 'of','the' ),( 'and','the' ),( 'to','be' )...etc,which are obviously not related to content of real text.However,in the chi-squared feature selection mehod,the features it select are like ('await','collect'),('tri', 'contact'), ('1000', 'cash'),which are more close to the content of real text compared to sorting method.
+
+#### 2.BERT
