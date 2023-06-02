@@ -12,7 +12,7 @@ In this project,we want to simulate the mail type classifier to predict the mail
 The difference b/t our project and most existing ones is that we don't use the state of the art models like XGBoost,we compare the difference b/t the most fundamental language model ngram,ngram w/different feature selection method called chi suqare,and a advanced technique called BERT.  
 
 ### Dataset/Platform
-I am using Spambase dataset from [this kaggle](https://www.kaggle.com/datasets/nittalasatyasrinivas/smsspamcollectiontsv) and split them into 2 manually for training and testing.  
+I am using Spambase dataset from [here](https://www.kaggle.com/datasets/nittalasatyasrinivas/smsspamcollectiontsv) and split them into 2 manually for training and testing.  
 The distribution of dataset is presented below.  
 ```mermaid
 pie
@@ -75,7 +75,8 @@ BERT is a transformer-based model that utilizes a deep neural network architectu
 One of the key innovations of BERT is its ability to capture the bidirectional context of words. Unlike previous language models that only considered the left or right context of a word, BERT considers both sides, allowing it to better understand the meaning of a word in relation to its surrounding words.<br/><br/>
 The pre-training process of BERT involves two main tasks: masked language modeling (MLM) and next sentence prediction (NSP). MLM involves randomly masking words in the input text and training the model to predict the masked words. NSP involves providing pairs of sentences to the model and training it to predict whether the second sentence follows the first in the original text.
 
-After pre-training, BERT can be fine-tuned on specific downstream NLP tasks such as text classification,which is what we use here : mail type prediction.
+However,in pursuit of speed,we use DistilBERT in this project. DistilBERT is a transformers model, smaller and faster than BERT, which was pretrained on the same corpus in a self-supervised fashion, using the BERT base model as a teacher. This means it was pretrained on the raw texts only, with no humans labelling them in any way  (which is why it can use lots of publicly available data) with an automatic process to generate inputs and labels from those texts using the BERT base model.  
+<br/>After pre-training, BERT can be fine-tuned on specific downstream NLP tasks such as text classification,which is what we use here : mail type prediction.
 
 ### Evaluation metric
 We define four parameters as follows  
@@ -101,8 +102,7 @@ F1-score = 2 * Precision * Recall / (Precision + Recall)
 F1 Score is a metric that considers both precision and recall,and equalizes the importance of both parameters.
 It is the harmonic mean(average) of the precision and recall.
 
-### Results & Analysis
-#### Result 
+### Result 
 F1 socre of 3 ngram models under different feature selection methods.
 ![](https://imgur.com/t8Uf1eg.jpg)
 
@@ -112,9 +112,20 @@ Precision of 3 ngram models under different feature selection methods.
 Recall of 3 ngram models under different feature selection methods.
 ![](https://imgur.com/wRDbgAz.jpg)
 
-#### Analysis
+### Analysis & Discussion
 #### 1. Chi-squared test for feature selection
 We can see that in both unigram and bigram models,there's a significant improvement in all of the 3 evaluation metrics. In contrast to the trigram model,which already has a better prerformance because its better connectivity of context,the improvement of chi-square test is thus not that obvious.
 <br/>After printing 20 highest ranked features the 2 methods select,we can find that what sorting method choose is like ( 'of','the' ),( 'and','the' ),( 'to','be' )...etc,which are obviously not related to content of real text.However,in the chi-squared feature selection mehod,the features it select are like ('await','collect'),('tri', 'contact'), ('1000', 'cash'),which are more close to the content of real text compared to sorting method.
 
 #### 2.BERT
+With the result shown above,we can see the strong power of BERT using its pre-trained model.The improvement can be obviously seen in Recall and F1-score,which means that the ratio of the correctly positively-labeled increases.The reason behind this I think is that BERT introduces a mechanism called 'self-attention',which automatically detects which words are related to the final answer.Besides,it considers the semantic of the whole sentence,and that's exactly the drwaback of negram model,beacuse it only considers the relationship in nearby words. 
+
+### Limitation 
+#### 1.Chi-suqared feature selection
+Although it has a relatively better performance compared with sort feature selection method,the most fundamental issue limiting the performance of the model is ngram model,which only considers considers the relationship in nearby words,instead of the semantic of whole sentence.
+
+#### 2.BERT
+The limitation of model based on BERT in this project should be the size of data set. If we can get more labeled ham/spam data,the 3 evaluation metrics should be more close to real world situation.However,in this project,the amount of data set is already able to show the differnet perfomace b/t baseline and main approaches.
+
+### Practical use
+One possible way is to use the models mentioned above to predict the mails in my own email inbox. To get the dataset,just extract emails from Gmail from 'Inbox' and 'Spam' folders and label them manually.Next,train the model using the methods metioned above and then we can predict the test data set which is the upcoming emails and see their result.According to the reslut,put them in the 'Inbox' or 'Spam'.
