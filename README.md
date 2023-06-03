@@ -20,6 +20,11 @@ pie
     "ham" : 4822
     "spam" : 746
 ```
+#### preprocess 
++ onvert to lower case
++ remove stopwords : A stop word is a commonly used word (such as “the”, “a”, “an”, “in”),which typically have nothing to do with the semantic of the sentence.
++ Remove punctuations 
++ Stemming : words stemming is reducing a word to its base word or stem in such a way that the words of similar kind lie under a common stem,like singing->sing, sings->sing, sung->sing
 
 ### Baseline
 In the baseline,we use Gaussian Naive Bayes classifier w/ unigram,bigram,trigram and k-th highest freq. as feature selection method 
