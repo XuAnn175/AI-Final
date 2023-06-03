@@ -75,9 +75,10 @@ After calculating the chi-squared value of each feature,we select the k(default=
 #### 2.Bert
 BERT is a transformer-based model that utilizes a deep neural network architecture known as the transformer. It is trained in an unsupervised manner on a large corpus of text, using a technique called "masked language modeling." During training, a portion of the input text is randomly masked, and the model is trained to predict the masked words based on the surrounding context.
 
+One of the key innovations of BERT is its ability to capture the bidirectional context of words. Unlike previous language models that only considered the left or right context of a word, BERT considers both sides, allowing it to better understand the meaning of a word in relation to its surrounding words.<br/><br/>
 The pre-training process of BERT involves two main tasks: masked language modeling (MLM) and next sentence prediction (NSP). MLM involves randomly masking words in the input text and training the model to predict the masked words. NSP involves providing pairs of sentences to the model and training it to predict whether the second sentence follows the first in the original text.
 
-However,in pursuit of speed,we use DistilBERT in this project. DistilBERT is a transformers model, smaller and faster than BERT, which was pretrained on the same corpus in a self-supervised manner, using the BERT base model as a teacher. This means it was pretrained on the raw texts only, with no humans labelling them in any way  (which is why it can use lots of publicly available data) with an automatic process to generate inputs and labels from those texts using the BERT base model.  
+However,in pursuit of speed,we use DistilBERT in this project. DistilBERT is a transformers model, smaller and faster than BERT, which was pretrained on the same corpus in a self-supervised fashion, using the BERT base model as a teacher. This means it was pretrained on the raw texts only, with no humans labelling them in any way  (which is why it can use lots of publicly available data) with an automatic process to generate inputs and labels from those texts using the BERT base model.  
 <br/>After pre-training, BERT can be fine-tuned on specific downstream NLP tasks such as text classification,which is what we use here : mail type prediction.
 
 ### Evaluation metric
