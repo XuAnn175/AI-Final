@@ -20,11 +20,6 @@ pie
     "ham" : 4822
     "spam" : 746
 ```
-#### preprocess 
-+ onvert to lower case
-+ remove stopwords : A stop word is a commonly used word (such as “the”, “a”, “an”, “in”),which typically have nothing to do with the semantic of the sentence.
-+ Remove punctuations 
-+ Stemming : words stemming is reducing a word to its base word or stem in such a way that the words of similar kind lie under a common stem,like singing->sing, sings->sing, sung->sing
 
 ### Baseline
 In the baseline,we use Gaussian Naive Bayes classifier w/ unigram,bigram,trigram and k-th highest freq. as feature selection method 
@@ -32,9 +27,10 @@ In the baseline,we use Gaussian Naive Bayes classifier w/ unigram,bigram,trigram
 graph LR
     A[TrainData] -->|preprocess|B(feature selection)
     B --> |k most freq.|C{modeltype}
-    C --> |unigram|H(evaluation)
-    C --> |bigram|H(evaluation)
-    C --> |trigram|H(evaluation)
+    C --> |unigram|H(GNB)
+    C --> |bigram|H(GNB)
+    C --> |trigram|H(GNB)
+    H --> G(evaluation)
 ```
 #### unigram
 The appearance prob. of a word is independent from the other words.
@@ -60,11 +56,13 @@ In the baseline model,we use the most intuitive way : choose k-th highest freq. 
 ```mermaid
 graph LR
     A[TrainData] -->|preprocess|B(feature selection)
+    A[TrainData] -->|preprocess|K(BERT)
     B --> |chi-squared|C{modeltype}
-    C --> |unigram|H(evaluation)
-    C --> |bigram|H(evaluation)
-    C --> |trigram|H(evaluation)
-    C --> |bert|H(evaluation)
+    C --> |unigram|H(GNB)
+    C --> |bigram|H(GNB)
+    C --> |trigram|H(GNB)
+    H --> G(evaluation)
+    K --> G
 ```
 #### 1.Chi-squared test for feature selection  
 Based on ngram model,instead of choosing k-th highest freq. uni/bi/trigrams,we change to another feature selection method called  Chi-Squared test for feature selection.
