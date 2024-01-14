@@ -1,4 +1,4 @@
-# Ham or Spam email type prediction.
+# Ham or Spam email type predictior.
 ### Introduction
 Spam emails in your inbox would be annoying since it disturbs the routine. That is why our email accounts already have got a spam filter. In addition, it would be interesting to know about how it is developed and different ways of filtering methods so as to filter spam emails more efficiently and effectively.  
 In this project,we want to discuss performance between different language models like ngram and BERT. We will also discuss how to improve the most fundamental ngram models.
